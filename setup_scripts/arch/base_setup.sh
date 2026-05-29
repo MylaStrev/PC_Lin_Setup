@@ -8,7 +8,7 @@ PACKAGES=(
   "obs-studio"
   "spotify-launcher"
   "discord"
-  "filezilla"
+#  "filezilla"
   "orca-slicer"
   "protonup-qt"
   "protonplus"
