@@ -12,12 +12,11 @@ PACKAGES=(
   "orca-slicer"
   "protonup-qt"
   "protonplus"
-
+  "libreoffice-fresh"
 )
 
 FLATPAK_PACKAGES=(
   "io.edcd.EDMarketConnector"
-
 )
 
 echo "## INSTALLING YAY..."
