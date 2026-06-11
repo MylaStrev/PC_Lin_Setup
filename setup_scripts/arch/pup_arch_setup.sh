@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# package lists
 PACKAGES=(
   "flatpak"
   "vlc"
@@ -19,9 +20,11 @@ FLATPAK_PACKAGES=(
   "io.edcd.EDMarketConnector"
 )
 
+# yay aur helper install
 echo "## INSTALLING YAY..."
 sudo pacman -S --noconfirm yay
 
+#package install scripts
 echo "## INSTALLING PACMAN PACKAGES"
 
 for pkg in "${PACKAGES[@]}"; do
@@ -39,6 +42,7 @@ for pkg in "${FLATPAK_PACKAGES[@]}"; do
     else
         echo "## installing $pkg..."
         sudo flatpak install flathub "${FLATPAK_PACKAGES[@]}" -y --noninteractive
+        echo "## $pkg install command complete"
     fi
 done
 
@@ -46,4 +50,4 @@ echo "## RUNNING UPDATE AND UPGRADE..."
 sudo yay -Syu
 sudo flatpak update
 
-echo "## ALL DONE"
+echo "## INSTALL COMPLETE!"
