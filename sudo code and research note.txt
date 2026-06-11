@@ -1,0 +1,47 @@
+
+## install scripts here
+
+refernce list "PACKAGES" and search for packages matching name
+then search internally for if-installed
+if instlled, then do echo " "package" installed"
+if-else, then do echo "installing "package"..."
+         then run install command for respective package manager
+done
+
+install script addition goals
+- add in script section where it will check the install had completed successfully and without errors
+- add in condenser flags and progress bar for cleaner CLI output
+- cli output needs to show errors if they turn up
+
+example code:
+
+## REF_LISTS
+
+PACKAGES=(
+  "firefox"
+  "discord"
+  "spotify"
+)
+
+## this line searches for packages in ref-list then continue script..
+
+for pkg in "${PACKAGES[@]}"; do
+
+## this will search for refernce package and see if the package in installed and then says installed if it is
+
+if pacman -Qi "$pkg" &> /dev/null; then
+        echo "## $pkg is already installed, skipping..."
+
+## this is the sections that runs install commands if the package has not been found.
+    else
+        echo "## installing $pkg..."
+        sudo yay -S --needed --noconfirm "${PACKAGES[@]}"
+
+## this is where the added commands will be for the added script goals
+    fi
+done
+
+
+## to do list
+- resesrch additional scripting commands to check installs
+- add in relivant scriptl-lines and test
