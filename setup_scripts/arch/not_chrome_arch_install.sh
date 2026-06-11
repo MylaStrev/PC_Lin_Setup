@@ -13,6 +13,7 @@ PACKAGES=(
 #  "protonup-qt"
 #  "protonplus"
   "libreoffice-fresh"
+  "btop"
 )
 
 #FLATPAK_PACKAGES=(
@@ -42,7 +43,7 @@ for pkg in "${PACKAGES[@]}"; do
         echo "## $pkg is already installed, skipping..."
     else
         echo "## installing $pkg..."
-        sudo yay -S --needed --noconfirm "${PACKAGES[@]}"
+        yay -S --needed --noconfirm "${PACKAGES[@]}"
     fi
 done
 
@@ -57,7 +58,8 @@ done
 #done
 
 echo "## RUNNING UPDATE AND UPGRADE..."
-sudo yay -Syu
+sudo pacman -Syu
+yay -Syu
 #sudo flatpak update
 
 echo "## INSTALL COMPLETE!"
