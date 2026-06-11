@@ -13,6 +13,10 @@ install script addition goals
 - add in condenser flags and progress bar for cleaner CLI output
 - cli output needs to show errors if they turn up
 
+## to do list
+- resesrch additional scripting commands to check installs
+- add in relivant scriptl-lines and test
+
 example code:
 
 ## REF_LISTS
@@ -41,7 +45,3 @@ if pacman -Qi "$pkg" &> /dev/null; then
     fi
 done
 
-
-## to do list
-- resesrch additional scripting commands to check installs
-- add in relivant scriptl-lines and test
