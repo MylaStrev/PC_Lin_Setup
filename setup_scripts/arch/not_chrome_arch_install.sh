@@ -14,6 +14,7 @@ PACKAGES=(
 #  "protonplus"
   "libreoffice-fresh"
   "btop"
+  "github-desktop"
 )
 
 #FLATPAK_PACKAGES=(
