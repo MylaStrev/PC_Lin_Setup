@@ -1,38 +1,25 @@
-#!/bin/bash
+Perfect! Here's a side-by-side comparison showing what I'd add:
 
-PACKAGES=(
-#  "flatpak"
-  "vlc"
-#  "blender"
-#  "obsidian"
-#  "obs-studio"
-  "spotify-launcher"
-  "discord"
-#  "filezilla"
-#  "orca-slicer"
-#  "protonup-qt"
-#  "protonplus"
-  "libreoffice-fresh"
-  "github-desktop"
-)
+## **Changes Overview:**
 
-FLATPAK_PACKAGES=(
-#  "io.edcd.EDMarketConnector"
-)
-
+### **1. Add color variables (after line 20):**
+```bash
 # Color codes for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
+```
 
+### **2. Add tracking arrays (after color codes):**
+```bash
 # Track failures
 FAILED_PACKAGES=()
 FAILED_FLATPAKS=()
+```
 
-echo "## INSTALLING YAY..."
-sudo pacman -S --noconfirm yay
-
+### **3. Add YAY verification (after line 23):**
+```bash
 # Verify yay installation
 if ! command -v yay &> /dev/null; then
     echo -e "${RED}✗ YAY installation failed${NC}"
@@ -40,19 +27,10 @@ if ! command -v yay &> /dev/null; then
 else
     echo -e "${GREEN}✓ YAY installed successfully${NC}"
 fi
+```
 
-echo ""
-echo "## INSTALLING PACMAN PACKAGES"
-
-for pkg in "${PACKAGES[@]}"; do
-    if pacman -Qi "$pkg" &> /dev/null; then
-        echo "## $pkg is already installed, skipping..."
-    else
-        echo "## installing $pkg..."
-        sudo yay -S --needed --noconfirm "${PACKAGES[@]}"
-    fi
-done
-
+### **4. Add pacman package verification (after the pacman installation loop):**
+```bash
 # Verify all pacman packages
 echo ""
 echo "## VERIFYING PACMAN PACKAGES..."
@@ -64,19 +42,10 @@ for pkg in "${PACKAGES[@]}"; do
         FAILED_PACKAGES+=("$pkg")
     fi
 done
+```
 
-echo ""
-echo "## INSTALLING FLATPAK PACKAGES"
-
-for pkg in "${FLATPAK_PACKAGES[@]}"; do
-    if flatpak info "$pkg" >/dev/null 2>&1; then
-        echo "## $pkg is already installed, skipping..."
-    else
-        echo "## installing $pkg..."
-        sudo flatpak install flathub "${FLATPAK_PACKAGES[@]}" -y --noninteractive
-    fi
-done
-
+### **5. Add flatpak package verification (after the flatpak installation loop):**
+```bash
 # Verify all flatpak packages
 echo ""
 echo "## VERIFYING FLATPAK PACKAGES..."
@@ -88,12 +57,10 @@ for pkg in "${FLATPAK_PACKAGES[@]}"; do
         FAILED_FLATPAKS+=("$pkg")
     fi
 done
+```
 
-echo ""
-echo "## RUNNING UPDATE AND UPGRADE..."
-sudo yay -Syu
-sudo flatpak update
-
+### **6. Replace final "ALL DONE" message (line 49) with summary report:**
+```bash
 # Final summary
 echo ""
 echo "========================================"
@@ -118,3 +85,14 @@ else
     echo "========================================"
     exit 1
 fi
+```
+
+---
+
+## **What this does:**
+- ✅ Verifies each package installed successfully
+- 🎨 Shows colored output (green ✓ for success, red ✗ for failure)
+- 📊 Displays a clear summary at the end listing any failures
+- 🛑 Returns proper exit codes (0=success, 1=failure)
+
+Would you like me to proceed with these changes?
