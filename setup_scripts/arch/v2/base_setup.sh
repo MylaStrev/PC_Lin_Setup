@@ -13,6 +13,7 @@ PACKAGES=(
 #  "protonup-qt"
 #   "protonplus"
   "libreoffice-fresh"
+  "btop"
   "github-desktop"
 )
 #=========================
