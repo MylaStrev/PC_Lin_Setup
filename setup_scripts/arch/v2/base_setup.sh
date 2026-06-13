@@ -68,6 +68,7 @@ for pkg in "${PACKAGES[@]}"; do
   fi
 done
 echo "#============================"
+# flatpak package verficiation
 echo "## VERIFYING FLATPAK PACKAGES"
 for pkg in "${FLATPAK_PACKAGES[@]}"; do
   if flatpak info "$pkg" >/dev/null 2>&1; then
@@ -79,4 +80,4 @@ for pkg in "${FLATPAK_PACKAGES[@]}"; do
 done
 echo "#============================"
 #=========================
-echo "## ALL DONE"
+echo "## FINISHED"
