@@ -32,7 +32,6 @@ FAILED_FLATPAKS=()
 
 echo "## INSTALLING YAY..."
 sudo pacman -S --noconfirm yay
-
 # Verify yay installation
 if ! command -v yay &> /dev/null; then
     echo -e "${RED}✗ YAY installation failed${NC}"
