@@ -41,7 +41,6 @@ else
     echo -e "${GREEN}✓ YAY installed successfully${NC}"
 fi
 
-echo ""
 echo "## INSTALLING PACMAN PACKAGES"
 
 for pkg in "${PACKAGES[@]}"; do
@@ -53,6 +52,21 @@ for pkg in "${PACKAGES[@]}"; do
     fi
 done
 
+echo "## INSTALLING FLATPAK PACKAGES"
+
+for pkg in "${FLATPAK_PACKAGES[@]}"; do
+    if flatpak info "$pkg" >/dev/null 2>&1; then
+        echo "## $pkg is already installed, skipping..."
+    else
+        echo "## installing $pkg..."
+        sudo flatpak install flathub "${FLATPAK_PACKAGES[@]}" -y --noninteractive
+    fi
+done
+
+echo "## RUNNING UPDATE AND UPGRADE..."
+sudo yay -Syu
+sudo flatpak update
+
 # Verify all pacman packages
 echo ""
 echo "## VERIFYING PACMAN PACKAGES..."
@@ -62,18 +76,6 @@ for pkg in "${PACKAGES[@]}"; do
     else
         echo -e "${RED}✗ $pkg - FAILED${NC}"
         FAILED_PACKAGES+=("$pkg")
-    fi
-done
-
-echo ""
-echo "## INSTALLING FLATPAK PACKAGES"
-
-for pkg in "${FLATPAK_PACKAGES[@]}"; do
-    if flatpak info "$pkg" >/dev/null 2>&1; then
-        echo "## $pkg is already installed, skipping..."
-    else
-        echo "## installing $pkg..."
-        sudo flatpak install flathub "${FLATPAK_PACKAGES[@]}" -y --noninteractive
     fi
 done
 
@@ -89,13 +91,7 @@ for pkg in "${FLATPAK_PACKAGES[@]}"; do
     fi
 done
 
-echo ""
-echo "## RUNNING UPDATE AND UPGRADE..."
-sudo yay -Syu
-sudo flatpak update
-
 # Final summary
-echo ""
 echo "========================================"
 if [ ${#FAILED_PACKAGES[@]} -eq 0 ] && [ ${#FAILED_FLATPAKS[@]} -eq 0 ]; then
     echo -e "${GREEN}✓ ALL INSTALLATIONS COMPLETED SUCCESSFULLY${NC}"
