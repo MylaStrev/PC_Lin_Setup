@@ -3,22 +3,20 @@
 #=========================
 PACKAGES=(
   "vlc"
-#  "blender"
-#  "obsidian"
-#  "obs-studio"
+  "blender"
+  "obsidian"
+  "obs-studio"
   "spotify-launcher"
   "discord"
-#  "filezilla"
-#  "orca-slicer"
-#  "protonup-qt"
-#   "protonplus"
+  "orca-slicer"
+  "protonup-qt"
+  "protonplus"
   "libreoffice-fresh"
   "btop"
   "github-desktop"
 )
-#=========================
 FLATPAK_PACKAGES=(
-#  "io.edcd.EDMarketConnector"
+  "io.edcd.EDMarketConnector"
 )
 #=========================
 # Track failures
@@ -29,6 +27,10 @@ FAILED_FLATPAKS=()
 RED='\e[0;31m' # for error
 GREEN='\e[0;32m' # for success
 NC='\e[0m' # No Color
+#=========================
+# command calls
+YAY_INT='sudo yay -Sq --needed --noconfirm'
+FP_INT='sudo flatpak install flathub -y --noninteractive'
 #=========================
 echo "## INSTALLING FLATPAK AND YAY..."
 sudo pacman -S --noconfirm yay flatpak
@@ -44,16 +46,16 @@ for pkg in "${PACKAGES[@]}"; do
         echo "## $pkg is already installed, skipping..."
     else
         echo "## installing $pkg..."
-        sudo yay -Sq --needed --noconfirm "${PACKAGES[@]}";
+        "${YAY_INT}" "${PACKAGES[@]}";
     fi
 done
-#=========================
+
 for pkg in "${FLATPAK_PACKAGES[@]}"; do
     if flatpak install "$pkg" >/dev/null 2>&1; then
         echo "## $pkg is already installed, skipping..."
     else
         echo "## installing $pkg..."
-        sudo flatpak install flathub "${FLATPAK_PACKAGES[@]}" -y --noninteractive;
+      "${FP_INT}" "${FLATPAK_PACKAGES[@]}";
     fi
 done
 #=========================

@@ -16,8 +16,6 @@ PACKAGES=(
   "btop"
   "github-desktop"
 )
-
-#=========================
 FLATPAK_PACKAGES=(
 #  "io.edcd.EDMarketConnector"
 )
@@ -48,7 +46,7 @@ for pkg in "${PACKAGES[@]}"; do
         sudo yay -Sq --needed --noconfirm "${PACKAGES[@]}";
     fi
 done
-#=========================
+
 for pkg in "${FLATPAK_PACKAGES[@]}"; do
     if flatpak install "$pkg" >/dev/null 2>&1; then
         echo "## $pkg is already installed, skipping..."
