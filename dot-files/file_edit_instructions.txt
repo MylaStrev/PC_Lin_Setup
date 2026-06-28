@@ -1,0 +1,14 @@
+edit fish config
+
+.config/fish/config.fish
+add to end
+
+starship init fish | source
+
+
+edit bashrc
+
+home/.bashrc
+add to end
+
+eval "$(starship init bash)"
