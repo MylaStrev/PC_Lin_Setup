@@ -1,4 +1,9 @@
 purples
-dark = '#540A6B'
-mid = '#6D247F'
-light = '#8D36A8'
+dark = #540A6B
+mid = #6D247F
+light = #8D36A8
+
+pinks
+dark = #C809BE
+mid = #F527EB
+light = #FA8FF4
