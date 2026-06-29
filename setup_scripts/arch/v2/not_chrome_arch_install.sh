@@ -15,6 +15,7 @@ PACKAGES=(
   "libreoffice-fresh"
   "btop"
   "github-desktop"
+  "starship"
 )
 FLATPAK_PACKAGES=(
 #  "io.edcd.EDMarketConnector"

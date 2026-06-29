@@ -18,6 +18,7 @@ PACKAGES=(
   "libreoffice-fresh"
   "btop"
   "github-desktop"
+  "starship"
 )
 
 #=========================
