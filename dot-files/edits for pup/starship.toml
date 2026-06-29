@@ -1,0 +1,54 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](bg:colour_1 fg:colour_1)\
+$os\
+$username\
+[](bg:colour_2 fg:colour_1)\
+$directory\
+[](bg:colour_3 fg:colour_2)\
+$time\
+[ ](fg:colour_3)\
+"""
+palette = 'colour'
+
+# [ 1 | 2 | 3 ]
+# colour_1 for section 1
+# colour_2 for section 2
+# etc...
+
+[palettes.colour]
+colour_1 = '#C809BE'
+colour_2 = '#F527EB'
+colour_3 = '#FA8FF4'
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+[username]
+show_always = true
+style_user = "bg:colour_1"
+style_root = "bg:colour_1"
+format = '[$user ]($style)'
+disabled = false
+
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+style = "bg:colour_1"
+disabled = true # Disabled by default
+
+[directory]
+style = "bg:colour_2"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:colour_3"
+format = '[ $time ]($style)'
