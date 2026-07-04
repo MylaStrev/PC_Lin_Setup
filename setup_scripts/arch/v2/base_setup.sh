@@ -4,7 +4,6 @@
 PACKAGES=(
   "vlc"
 #  "blender"
-#  "obsidian"
 #  "obs-studio"
   "spotify-launcher"
   "discord"
@@ -18,6 +17,7 @@ PACKAGES=(
 )
 FLATPAK_PACKAGES=(
   "io.edcd.EDMarketConnector"
+  "md.obsidian.Obsidian"
 )
 #=========================
 # Track failures
