@@ -16,6 +16,7 @@ PACKAGES=(
   "btop"
   "github-desktop"
   "starship"
+  "visual-studio-code-bin"
 )
 FLATPAK_PACKAGES=(
 #  "io.edcd.EDMarketConnector"
