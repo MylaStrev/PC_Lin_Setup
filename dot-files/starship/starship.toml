@@ -2,7 +2,6 @@
 
 format = """
 [╭](fg:nc) [](fg:colour_1)\
-$os\
 $username\
 [](bg:colour_2 fg:colour_1)\
 $directory\
@@ -23,6 +22,9 @@ colour_1 = '#540A6B'
 colour_2 = '#6D247F'
 colour_3 = '#8D36A8'
 
+user_colour_1 = '#ff0000'
+user_colour_2 = '#d2abde'
+
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
@@ -30,16 +32,12 @@ colour_3 = '#8D36A8'
 # and use the os module below
 [username]
 show_always = true
-style_user = "bg:colour_1"
-style_root = "bg:colour_1"
-format = '[$user ]($style)'
+style_user = "bg:colour_1 fg:user_colour_2 "
+style_root = "bg:colour_1 fg:user_colour_1 "
+format = '[$user]($style)'
+aliases = { "myla" = "Myla" }
 disabled = false
-
 # An alternative to the username module which displays a symbol that
-# represents the current operating system
-[os]
-style = "bg:colour_1"
-disabled = true # Disabled by default
 
 [directory]
 style = "bg:colour_2"
