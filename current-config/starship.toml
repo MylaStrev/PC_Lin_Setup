@@ -1,0 +1,62 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[╭](fg:nc) [](fg:colour_1)\
+$username\
+[](bg:colour_2 fg:colour_1)\
+$directory\
+[](bg:colour_3 fg:colour_2)\
+$time\
+[ ](fg:colour_3)\
+$line_break$character"""
+palette = 'colour'
+
+# [ 1 | 2 | 3 ]
+# colour_1 for section 1
+# colour_2 for section 2
+# etc...
+
+[palettes.colour]
+colour_0 = '#f0f0f0'
+colour_1 = '#540A6B'
+colour_2 = '#6D247F'
+colour_3 = '#8D36A8'
+
+user_colour_1 = '#ff0000'
+user_colour_2 = '#d2abde'
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+[username]
+show_always = true
+style_user = "bg:colour_1 fg:user_colour_2 "
+style_root = "bg:colour_1 fg:user_colour_1 "
+format = '[$user]($style)'
+aliases = { "myla" = "Myla" }
+disabled = false
+# An alternative to the username module which displays a symbol that
+
+[directory]
+style = "bg:colour_2"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:colour_3"
+format = '[ $time ]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[╰─❯](bold fg:color_green)'
+error_symbol = '[╰─❯](bold fg:color_red)'
+
